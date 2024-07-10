@@ -1,0 +1,6 @@
+extension EllipsisExtension on String {
+
+
+
+  
+}
