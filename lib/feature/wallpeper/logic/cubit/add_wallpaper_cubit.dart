@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:wallapp/core/utils/config/enum.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:wallapp/core/utils/error/dialoge_error.dart';
 import 'package:wallapp/core/utils/widgets/upload_file.dart';
 import 'package:wallapp/feature/wallpeper/model/wallpaper_model.dart';
 
@@ -127,5 +128,37 @@ class AddWallpaperCubit extends Cubit<AddWallpaperState> {
       viewState = ViewState.error;
       emit(AddWallpaperInitial());
     }
+  }
+
+  void checkStateCategory(BuildContext context) async {
+    if (selectedCategory.isEmpty) {
+      showMessage(context, "Please select a category");
+      return;
+    }
+    if (wallpperTags.isEmpty) {
+      showMessage(context, "Please select a category");
+      return;
+    }
+    if (wallpeprImage == null) {
+      showMessage(context, "Please select a wallpaper image");
+      return;
+    }
+    await saveWallpaper();
+
+    if (viewState == ViewState.error) {
+      if (context.mounted) {
+        showMessage(context, message);
+      }
+      return;
+    }
+    if (viewState == ViewState.success) {
+      if (context.mounted) {
+        showMessage(
+            context, "Wallpaper was successFully saved and aviable for use",
+            isError: false);
+      }
+      return;
+    }
+    emit(AddWallpaperInitial());
   }
 }

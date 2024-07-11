@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wallapp/core/utils/error/dialoge_error.dart';
+import 'package:wallapp/core/utils/widgets/build_app_bar.dart';
 import 'package:wallapp/core/utils/widgets/custom_loading_widgets.dart';
 import 'package:wallapp/feature/category_screen/logic/cubit/category_cubit.dart';
 import 'package:wallapp/feature/category_screen/widgets/add_category_widges/custom_empty_widgets.dart';
@@ -34,6 +35,7 @@ class CategoryScreen extends StatelessWidget {
               );
             }
             return Scaffold(
+              appBar: buildAppBar(title: const Text('Categories')),
               body: CustomBodyCategoryScreenWidgets(
                 isAdmin: isAdmin,
                 categories: categories,

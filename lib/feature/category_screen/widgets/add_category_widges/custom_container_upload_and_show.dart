@@ -32,7 +32,6 @@ class CustomContainerUploadAndShow extends StatelessWidget {
           },
         );
       } else {
-        // Use NetworkImage for network links
         decorationImage = DecorationImage(
           image: NetworkImage(image!),
           fit: BoxFit.cover,
@@ -56,9 +55,9 @@ class CustomContainerUploadAndShow extends StatelessWidget {
           child: Container(
               padding: EdgeInsets.all(10.r),
               margin: EdgeInsets.only(bottom: 10.h),
-              height: 120.h,
+              height: 150.h,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(15.r),
                 border: Border.all(color: ColorsManger.white),
                 image: decorationImage,
               ),

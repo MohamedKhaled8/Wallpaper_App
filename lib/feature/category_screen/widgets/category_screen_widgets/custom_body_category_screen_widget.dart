@@ -21,9 +21,14 @@ class CustomBodyCategoryScreenWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     var cubit = context.read<CategoryCubit>();
     return Padding(
-      padding: EdgeInsets.all(10.r),
-      child: ListView.builder(
+      padding: EdgeInsets.symmetric(horizontal: 10.r),
+      child: GridView.builder(
         itemCount: cubit.categories.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10.r,
+          childAspectRatio: 0.86.r,
+        ),
         itemBuilder: (context, index) {
           return CustomContainerUploadAndShow(
             onTap: () {
@@ -38,7 +43,7 @@ class CustomBodyCategoryScreenWidgets extends StatelessWidget {
                     .push(AppRouter.viewCategoryScreen, extra: name);
               }
             },
-            text: "Category Preview",
+            text: "",
             widget: Align(
               alignment: Alignment.bottomLeft,
               child: Text(
